@@ -21,9 +21,9 @@ app.use((req, res, next)=>{
     next();
 });
 //Maintenance page whatever path is given.  Note the placement order of app.use and app.get commands
-app.use((req, res, next) =>{
-    res.render('maintenance.hbs')
-})
+// app.use((req, res, next) =>{
+//     res.render('maintenance.hbs')
+// })
 
 app.use(express.static(__dirname + '/public')) // use files in public without routing every single file
 
@@ -56,6 +56,13 @@ app.get('/about', (req,res) =>{
         pageTitle: 'About Page',
     });
 });
+
+app.get('/projects', (req,res) =>{
+    //    res.send('About Page');
+        res.render('projects.hbs', {
+            pageTitle: 'Project Page',
+        });
+    });
 
 // /bad simulate what happens with response fails -- send back json with errorMessage property
 app.get('/bad', (req,res) =>{
